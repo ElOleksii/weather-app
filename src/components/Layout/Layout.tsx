@@ -1,4 +1,4 @@
-import Container from "../Common/Container";
+import Container from "../common/Container";
 import Header from "./Header";
 
 const Layout = ({ children }) => {

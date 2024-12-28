@@ -1,5 +1,5 @@
 import { FaLocationDot } from "react-icons/fa6";
-import Container from "../Common/Container";
+import Container from "../common/Container";
 import { useTheme } from "../../context/ThemeContext";
 import { fetchCityByUserGeolocation, fetchUserCity } from "../../api/city";
 import { useEffect, useState } from "react";

@@ -1,5 +1,7 @@
-import Card from "./components/Common/Card";
-import WeatherBlock from "./components/Common/WeaterBlock";
+import Card from "./components/common/Card";
+import WeatherBlock from "./components/common/WeaterBlock";
+import WeatherListByFavouriteCities from "./components/features/WeatherListByFavouriteCities";
+import WeatherListBySearchHistory from "./components/features/WeatherListBySearchHistory";
 import Layout from "./components/Layout/Layout";
 import ThemeContextProvider from "./context/ThemeContext";
 
@@ -7,11 +9,10 @@ function App() {
   return (
     <ThemeContextProvider>
       <Layout>
-        <Card className="w-[500px]" title={"Search History"}>
-          <WeatherBlock cityName={"Odesa"} main={15} weather={"sunny"} />
-          <WeatherBlock cityName={"Odesa"} main={15} weather={"sunny"} />
-          <WeatherBlock cityName={"Odesa"} main={15} weather={"sunny"} />
-        </Card>
+        <div className="flex flex-col gap-y-10">
+          <WeatherListBySearchHistory />
+          <WeatherListByFavouriteCities />
+        </div>
       </Layout>
     </ThemeContextProvider>
   );
