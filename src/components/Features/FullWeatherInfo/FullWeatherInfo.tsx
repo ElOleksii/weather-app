@@ -10,7 +10,6 @@ const FullWeatherInfo = () => {
       {currentWeather?.main && (
         <BackgroundImageByWeather state={currentWeather.main} />
       )}
-      <PreviewWeatherInfo {...weatherForThisDay} />
     </Card>
   );
 };
