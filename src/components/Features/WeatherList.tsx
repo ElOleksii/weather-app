@@ -1,16 +1,12 @@
 import Card from "../common/Card";
 import WeatherBlock from "../common/WeaterBlock";
+import FetchWeatherWrapper from "../widgets/FetchWeatherWrapper";
 
 const WeatherList = ({ title, cities }) => {
   return (
-    <Card className="w-[500px]" title={title}>
+    <Card title={title}>
       {cities.map(({ title, id }) => (
-        <WeatherBlock
-          cityName={title}
-          weather={"smth"}
-          main={"smth"}
-          key={id}
-        />
+        <FetchWeatherWrapper Component={WeatherBlock} city={title} key={id} />
       ))}
     </Card>
   );

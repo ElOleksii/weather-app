@@ -1,9 +1,8 @@
 import { FaLocationDot } from "react-icons/fa6";
 import Container from "../common/Container";
 import { useTheme } from "../../context/ThemeContext";
-import { fetchCityByUserGeolocation, fetchUserCity } from "../../api/city";
+import { fetchUserCity } from "../../api/city";
 import { useEffect, useState } from "react";
-import { fetchWeatherDataForThisDay } from "../../api/weather";
 import { useHistoryOfCitiesSearchingStore } from "../../store/city-search";
 
 const ThemeSwitcher = () => {
@@ -45,7 +44,7 @@ const Header = () => {
   };
 
   return (
-    <nav className=" bg-blue dark:bg-grey  text-white py-5 ">
+    <nav className=" bg-blue dark:bg-grey  text-white py-2 ">
       <Container className="flex items-center">
         <button className="flex items-center justify-center gap-2 text-lg ">
           <FaLocationDot size={24} fill="white" /> <span>{cityLocation}</span>
@@ -58,7 +57,7 @@ const Header = () => {
               e.currentTarget.value = ""; // Clear input
             }
           }}
-          className="p-2 rounded-lg dark:bg-grey bg-blue ml-[100px] focus:dark:bg-[#232933] focus:bg-[#3053d4] focus:outline-none border-none"
+          className="p-2 rounded-lg dark:bg-grey bg-blue ml-[100px]  focus:outline-none border-none"
           placeholder="Search by city name"
         />
         <div className="ml-auto">

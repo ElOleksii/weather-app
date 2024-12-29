@@ -1,5 +1,4 @@
 import axios from "axios";
-import { IWeatherResponse } from "../types/responses";
 import { getEnv } from "../utils/env/env.utils";
 
 const { weatherApiToken, weatherApiUrl } = getEnv();

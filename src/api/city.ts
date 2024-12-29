@@ -6,7 +6,10 @@ const { geolocationApiUrl } = getEnv();
 export const fetchCityByUserGeolocation = async ({
   latitude,
   longitude,
-}: GeolocationCoordinates) => {
+}: {
+  latitude: number;
+  longitude: number;
+}) => {
   try {
     const response = await axios.get<{ city: string }>(`${geolocationApiUrl}`, {
       params: {
@@ -15,6 +18,8 @@ export const fetchCityByUserGeolocation = async ({
         localityLanguage: "en",
       },
     });
+    console.log("latitude: ", latitude);
+    console.log("longitude: ", longitude);
     return response.data.city;
   } catch (error) {
     console.error(error);
