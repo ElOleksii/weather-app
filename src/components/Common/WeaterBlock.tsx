@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import FavouriteCityIcon from "../widgets/FavouriteCityIcon";
 import WeatherStateIcon from "../widgets/WeatherStateIcon";
 

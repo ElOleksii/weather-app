@@ -3,7 +3,8 @@ import Container from "../common/Container";
 import { useTheme } from "../../context/ThemeContext";
 import { fetchUserCity } from "../../api/city";
 import { useEffect, useState } from "react";
-import { useHistoryOfCitiesSearchingStore } from "../../store/city-search";
+import { useHistoryOfCitiesSearchingStore } from "../../store/history-of-cities-search";
+import { useCitySearch } from "../../store/city-search";
 
 const ThemeSwitcher = () => {
   const { isDarkTheme, toggleTheme } = useTheme();
@@ -28,6 +29,8 @@ const ThemeSwitcher = () => {
 const Header = () => {
   const [cityLocation, setCityLocation] = useState(null);
 
+  const { setSearchText } = useCitySearch();
+
   useEffect(() => {
     const fetchCity = async () => {
       const city = await fetchUserCity();
@@ -40,15 +43,19 @@ const Header = () => {
   const { addHistoryOfCitySearching } = useHistoryOfCitiesSearchingStore();
 
   const handleAddCity = (city: string) => {
+    setSearchText(city);
     addHistoryOfCitySearching(city);
   };
 
   return (
     <nav className=" bg-blue dark:bg-grey  text-white py-2 ">
       <Container className="flex items-center">
-        <button className="flex items-center justify-center gap-2 text-lg ">
-          <FaLocationDot size={24} fill="white" /> <span>{cityLocation}</span>
-        </button>
+        {cityLocation && (
+          <div className=" mr-[100px] flex items-center justify-center gap-2 text-lg ">
+            <FaLocationDot size={24} fill="white" /> <span>{cityLocation}</span>
+          </div>
+        )}
+
         <input
           type="text"
           onKeyDown={(e) => {
@@ -57,7 +64,7 @@ const Header = () => {
               e.currentTarget.value = ""; // Clear input
             }
           }}
-          className="p-2 rounded-lg dark:bg-grey bg-blue ml-[100px]  focus:outline-none border-none"
+          className="p-2 rounded-lg dark:bg-grey bg-blue  focus:outline-none border-none"
           placeholder="Search by city name"
         />
         <div className="ml-auto">

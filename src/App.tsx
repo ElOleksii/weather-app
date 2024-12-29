@@ -11,11 +11,11 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeContextProvider>
         <Layout>
-          <div className="flex gap-5">
-            <div className="md:w-1/2 w-full">
+          <div className="flex flex-col lg:flex-row gap-5">
+            <div className="w-full lg:w-1/2">
               <FullWeatherInfo />
             </div>
-            <div className="flex flex-col gap-y-10 md:w-1/2 w-full">
+            <div className="flex flex-col gap-y-10 w-full lg:w-1/2">
               <WeatherListBySearchHistory />
               <WeatherListByFavouriteCities />
             </div>

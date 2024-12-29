@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { WeatherState } from "../../constants/weather-state";
 
 const skyImagesByState = {
@@ -11,11 +10,11 @@ const skyImagesByState = {
   [WeatherState.Atmosphere]: "atmosphere.png",
 };
 
-const WeatherStateIcon = ({ state }) => {
+const WeatherStateIcon = ({ state, className = "" }) => {
   const url = `/weather-app/public/weather-state-icons/${skyImagesByState[state]}`;
 
   return (
-    <div className="w-[36px]">
+    <div className={`w-[36px] ${className}`}>
       <img src={url} className="w-full" alt="Sky state" />
     </div>
   );

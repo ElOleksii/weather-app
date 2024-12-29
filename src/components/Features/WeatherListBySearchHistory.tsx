@@ -1,4 +1,4 @@
-import { useHistoryOfCitiesSearchingStore } from "../../store/city-search";
+import { useHistoryOfCitiesSearchingStore } from "../../store/history-of-cities-search";
 
 import WeatherList from "./WeatherList";
 
