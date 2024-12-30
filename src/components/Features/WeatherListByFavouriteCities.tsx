@@ -3,6 +3,8 @@ import WeatherList from "./WeatherList";
 
 const WeatherListByFavouriteCities = () => {
   const { favouritesCities } = useFavouriteCityStore();
+  if (!favouritesCities?.length) return null;
+
   return <WeatherList title={"Favourites"} cities={favouritesCities} />;
 };
 

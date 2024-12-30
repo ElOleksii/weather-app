@@ -1,4 +1,4 @@
-import { memo, useEffect } from "react";
+import { memo } from "react";
 import useFetchForecast from "../../../hooks/useForecastByCity";
 import LoadingStateWrapper from "../../common/LoadingStateWrapper";
 import ForecastItem from "./ForecastItem";

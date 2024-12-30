@@ -4,6 +4,7 @@ import WeatherList from "./WeatherList";
 
 const WeatherListBySearchHistory = () => {
   const { historyOfCitiesSearching } = useHistoryOfCitiesSearchingStore();
+  if (!historyOfCitiesSearching?.length) return null;
   return (
     <WeatherList title={"Search History"} cities={historyOfCitiesSearching} />
   );
