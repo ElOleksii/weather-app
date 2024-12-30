@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { WeatherState } from "../../../../constants/weather-state";
 
 const cardImagesByWeatherState = {
@@ -12,11 +11,11 @@ const cardImagesByWeatherState = {
 };
 
 const BackgroundImageByWeather = ({ state }) => {
-  const url = `/weather-app/public/weather-card-background/${cardImagesByWeatherState[state]}`;
-  useEffect(() => {
-    console.log(cardImagesByWeatherState[state]);
-    console.log(url);
-  });
+  const url = `${import.meta.env.BASE_URL}/weather-card-background/${
+    cardImagesByWeatherState[state] ??
+    cardImagesByWeatherState[WeatherState.Atmosphere]
+  }`;
+
   return (
     <img
       className="absolute top-0 left-0 right-0 bottom-0 w-full h-full object-cover z-10 opacity-30 pointer-events-none rounded-lg"

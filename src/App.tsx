@@ -5,22 +5,25 @@ import WeatherListBySearchHistory from "./components/features/WeatherListBySearc
 import Layout from "./components/Layout/Layout";
 import ThemeContextProvider from "./context/ThemeContext";
 import { queryClient } from "./constants/query-client";
+import CityByGeolocationProvider from "./context/CityByGeolocationContext";
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeContextProvider>
-        <Layout>
-          <div className="flex flex-col lg:flex-row gap-5">
-            <div className="w-full lg:w-1/2">
-              <FullWeatherInfo />
+        <CityByGeolocationProvider>
+          <Layout>
+            <div className="flex flex-col lg:flex-row gap-5">
+              <div className="w-full lg:w-1/2">
+                <FullWeatherInfo />
+              </div>
+              <div className="flex flex-col md:gap-y-10 gap-5 w-full lg:w-1/2">
+                <WeatherListBySearchHistory />
+                <WeatherListByFavouriteCities />
+              </div>
             </div>
-            <div className="flex flex-col gap-y-10 w-full lg:w-1/2">
-              <WeatherListBySearchHistory />
-              <WeatherListByFavouriteCities />
-            </div>
-          </div>
-        </Layout>
+          </Layout>
+        </CityByGeolocationProvider>
       </ThemeContextProvider>
     </QueryClientProvider>
   );

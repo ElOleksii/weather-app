@@ -11,7 +11,9 @@ const skyImagesByState = {
 };
 
 const WeatherStateIcon = ({ state, className = "" }) => {
-  const url = `/weather-app/public/weather-state-icons/${skyImagesByState[state]}`;
+  const url = `${import.meta.env.BASE_URL}weather-state-icons/${
+    skyImagesByState[state] ?? skyImagesByState[WeatherState.Atmosphere]
+  }`;
 
   return (
     <div className={`w-[36px] ${className}`}>

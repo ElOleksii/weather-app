@@ -2,7 +2,6 @@ import useFetchWeatherForThisDayQuery from "../../hooks/useFetchWeatherForThisDa
 
 const FetchWeatherWrapper = ({ city, Component }) => {
   const { data: weatherForThisDay } = useFetchWeatherForThisDayQuery(city);
-  console.log(weatherForThisDay);
   return <div>{weatherForThisDay && <Component {...weatherForThisDay} />}</div>;
 };
 

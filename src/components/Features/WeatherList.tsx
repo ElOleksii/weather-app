@@ -1,5 +1,5 @@
 import Card from "../common/Card";
-import WeatherBlock from "../common/WeaterBlock";
+import WeatherBlock from "../common/WeatherBlock";
 import FetchWeatherWrapper from "../widgets/FetchWeatherWrapper";
 
 const WeatherList = ({ title, cities }) => {

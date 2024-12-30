@@ -1,12 +1,12 @@
 import { FaLocationDot } from "react-icons/fa6";
 import Container from "../common/Container";
 import { useTheme } from "../../context/ThemeContext";
-import { fetchUserCity } from "../../api/city";
-import { useEffect, useState } from "react";
+
 import { useHistoryOfCitiesSearchingStore } from "../../store/history-of-cities-search";
 import { useCitySearch } from "../../store/city-search";
 import { IoMoon } from "react-icons/io5";
 import { IoSunny } from "react-icons/io5";
+import { useCityByGeolocation } from "../../context/CityByGeolocationContext";
 
 const ThemeSwitcher = () => {
   const { isDarkTheme, toggleTheme } = useTheme();
@@ -37,22 +37,14 @@ const ThemeSwitcher = () => {
   );
 };
 
-const CityLocation = () => {
-  const [cityLocation, setCityLocation] = useState(null);
-
-  useEffect(() => {
-    const fetchCity = async () => {
-      const city = await fetchUserCity();
-      setCityLocation(city);
-    };
-
-    fetchCity();
-  }, []);
+const CityLocationLabel = () => {
+  const { cityByGeoLocation } = useCityByGeolocation();
 
   return (
-    cityLocation && (
+    cityByGeoLocation && (
       <div className="mr-[100px] hidden md:flex items-center justify-center gap-2 text-lg ">
-        <FaLocationDot size={24} fill="white" /> <span>{cityLocation}</span>
+        <FaLocationDot size={24} fill="white" />{" "}
+        <span>{cityByGeoLocation}</span>
       </div>
     )
   );
@@ -71,7 +63,7 @@ const Header = () => {
   return (
     <nav className=" bg-blue dark:bg-grey  text-white py-2 ">
       <Container className="flex items-center">
-        <CityLocation />
+        <CityLocationLabel />
 
         <input
           type="text"

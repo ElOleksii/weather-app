@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import FavouriteCityIcon from "../../../widgets/FavouriteCityIcon";
 import WeatherStateIcon from "../../../widgets/WeatherStateIcon";
 
@@ -6,10 +5,6 @@ const PreviewWeatherInfo = ({ name, main, weather, wind }) => {
   const currentWeather = weather?.[0];
   const { humidity, temp } = main;
   const { speed } = wind;
-
-  useEffect(() => {
-    console.log(main);
-  });
 
   return (
     <div className="flex justify-between">
@@ -25,7 +20,7 @@ const PreviewWeatherInfo = ({ name, main, weather, wind }) => {
         </div>
       </div>
       <WeatherStateIcon
-        className="w-[150px] z-50"
+        className="w-[100px] z-50"
         state={currentWeather.main}
       />
     </div>

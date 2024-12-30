@@ -2,27 +2,35 @@ import { useEffect } from "react";
 import useFetchWeatherForThisDayQuery from "../../../hooks/useFetchWeatherForThisDay";
 import { useCitySearch } from "../../../store/city-search";
 import { useHistoryOfCitiesSearchingStore } from "../../../store/history-of-cities-search";
+import { useCityByGeolocation } from "../../../context/CityByGeolocationContext";
 
 export const useFullWeatherInfo = () => {
   const { searchText } = useCitySearch();
-
   const { addHistoryOfCitySearching } = useHistoryOfCitiesSearchingStore();
 
-  const city = searchText;
+  const { isLoading: isCityByLocationLoading, cityByGeoLocation } =
+    useCityByGeolocation();
 
-  const { data: weatherForThisDay } = useFetchWeatherForThisDayQuery(city);
+  const city = searchText?.length ? searchText : cityByGeoLocation ?? "";
 
-  const currentWeather = weatherForThisDay?.weather?.[0];
+  const { data: weatherForCurrentDay, isLoading: isCityLoading } =
+    useFetchWeatherForThisDayQuery(city);
+
+  const isLoading =
+    (isCityLoading && !weatherForCurrentDay) ||
+    (isCityByLocationLoading && !weatherForCurrentDay);
+
+  const currentWeather = weatherForCurrentDay?.weather?.[0];
 
   useEffect(() => {
-    if (weatherForThisDay && searchText)
-      addHistoryOfCitySearching(weatherForThisDay.name);
-  }, [weatherForThisDay, searchText, addHistoryOfCitySearching]);
+    if (weatherForCurrentDay && searchText)
+      addHistoryOfCitySearching(weatherForCurrentDay.name);
+  }, [weatherForCurrentDay, searchText, addHistoryOfCitySearching]);
 
-  console.log(currentWeather);
   return {
     city,
     currentWeather,
-    weatherForThisDay,
+    weatherForCurrentDay,
+    isLoading,
   };
 };
