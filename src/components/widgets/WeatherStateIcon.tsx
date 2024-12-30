@@ -16,7 +16,7 @@ const WeatherStateIcon = ({ state, className = "" }) => {
   }`;
 
   return (
-    <div className={`w-[36px] ${className}`}>
+    <div className={`${className}`}>
       <img src={url} className="w-full" alt="Sky state" />
     </div>
   );

@@ -12,7 +12,7 @@ const WeatherBlock = ({ name, main, weather }) => {
         <span>{name}</span>
       </div>
       <div className="absolute left-1/2 transform -translate-x-1/2">
-        {<WeatherStateIcon state={currentWeather?.main} />}
+        {<WeatherStateIcon className="w-[36px]" state={currentWeather?.main} />}
       </div>
       <span>{Math.floor(temp)} °C</span>
     </div>

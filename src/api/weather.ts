@@ -1,20 +1,19 @@
 import axios from "axios";
 import { getEnv } from "../utils/env/env.utils";
+import { IWeatherResponse } from "../types/responses";
 
 const { weatherApiToken, weatherApiUrl } = getEnv();
 
 export const fetchWeatherDataForThisDay = async (city: string) => {
-  try {
-    const response = await axios.get(`${weatherApiUrl}/weather`, {
+  const response = await axios.get<IWeatherResponse>(
+    `${weatherApiUrl}/weather`,
+    {
       params: {
         q: city,
         appid: weatherApiToken,
         units: "metric",
       },
-    });
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching weather:", error);
-    throw error;
-  }
+    }
+  );
+  return response.data;
 };

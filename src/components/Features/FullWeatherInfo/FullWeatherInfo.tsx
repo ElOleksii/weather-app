@@ -1,11 +1,12 @@
 import Card from "../../common/Card";
 import LoadingStateWrapper from "../../common/LoadingStateWrapper";
+import Forecast from "../Forecast/Forecast";
 import BackgroundImageByWeather from "./components/BackgroundImageByWeather";
 import PreviewWeatherInfo from "./components/PreviewWeatherInfo";
 import { useFullWeatherInfo } from "./useFullWeatherInfo";
 
 const FullWeatherInfo = () => {
-  const { currentWeather, weatherForCurrentDay, isLoading } =
+  const { city, currentWeather, weatherForCurrentDay, isLoading } =
     useFullWeatherInfo();
 
   return (
@@ -20,6 +21,7 @@ const FullWeatherInfo = () => {
         {!!weatherForCurrentDay && (
           <>
             <PreviewWeatherInfo {...weatherForCurrentDay} />
+            <Forecast city={city} />
           </>
         )}
       </LoadingStateWrapper>
